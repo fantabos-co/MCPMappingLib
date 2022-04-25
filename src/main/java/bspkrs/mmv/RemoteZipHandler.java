@@ -36,10 +36,9 @@ import java.util.Scanner;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import bspkrs.mmv.gui.MappingGui;
-
 public class RemoteZipHandler
 {
+	private static final String MMV_VERSION = "1.0.3";
     private final URL    zipUrl;
     private final URL    digestUrl;
     private final File   localDir;
@@ -93,7 +92,7 @@ public class RemoteZipHandler
             try
             {
                 URLConnection uc = zipUrl.openConnection();
-                uc.addRequestProperty("User-Agent", "MMV/" + MappingGui.VERSION_NUMBER);
+                uc.addRequestProperty("User-Agent", "MMV/" + MMV_VERSION);
                 byte[] buffer = new byte[1024]; // Or whatever
                 int bytesRead;
                 try (InputStream is = uc.getInputStream())
@@ -140,7 +139,7 @@ public class RemoteZipHandler
         try
         {
             URLConnection uc = url.openConnection();
-            uc.addRequestProperty("User-Agent", "MMV/" + MappingGui.VERSION_NUMBER);
+            uc.addRequestProperty("User-Agent", "MMV/" + MMV_VERSION);
             InputStream is = uc.getInputStream();
             scanner = new Scanner(is, "UTF-8");
 

@@ -16,14 +16,6 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'com.google.code.gson:gson:2.8.6'
-}
-
 [compileJava, compileTestJava].each { cJava ->
     cJava.options.compilerArgs += ['-Xlint:unchecked']
     cJava.options.encoding = 'UTF-8'
