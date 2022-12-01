@@ -219,6 +219,9 @@ public class RemoteZipHandler
             {
                 String fileName = ze.getName();
                 File newFile = new File(destDir, fileName);
+                if (!newFile.toPath().normalize().startsWith(destDir.toPath().normalize())) {
+                    throw new IOException("Bad zip entry");
+                }
                 if (ze.isDirectory())
                 {
                     if (newFile.exists())
